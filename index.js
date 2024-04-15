@@ -146,8 +146,6 @@ compareBtn.addEventListener('click', async () => {
 
             //lägg instansen av klassen i en array som senare ska användas för att jämföra dem
             instanceArray.push(pokemonInstance);
-            
-            //här nånstans bör jämförelsen ligga!!
 
             //skriv ut rätt info
             let pokeContainer = document.createElement('div');
@@ -155,26 +153,11 @@ compareBtn.addEventListener('click', async () => {
 
             //hämta bild
 
-            // let imageData = await getData(pokemonInstance.imgURL);
-            // let image = imageData;
             let imageURL = pokemon.sprites.other.dream_world.front_default;
 
             let image = document.createElement('img');
             image.classList.add('pokeSprite');
             image.src = imageURL;
-
-            
-
-            console.log('image');
-
-
-
-
-
-
-
-
-
 
             //namn
             let pokeName = document.createElement('h4');
@@ -235,10 +218,13 @@ compareBtn.addEventListener('click', async () => {
 
     }); // här slutar .then som följt promise.all
 
-   
+}); // Slut på compareBtns eventlistener
 
 
+//Battle
 
-   
+let battleBtn = document.querySelector('#battleBtn');
 
-});
+battleBtn.addEventListener('click', ()=>{
+    
+})
