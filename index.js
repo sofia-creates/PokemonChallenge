@@ -74,6 +74,22 @@ class Pokemon {
             console.log(instance2.name + ' wins!')
         }
 
+    } //slut på comparePokemons
+
+    //battle
+    static battle = (instance1, instance2) => {
+        //välja den snabbaste pokemonen till att börja attackera
+        let attackPoke;
+        let defendingPoke;
+        if(instance1.stats.speed > instance2.stats.speed){
+            attackPoke = instance1;
+            defendingPoke = instance2;
+        } else if (instance2.stats.speed > instance1.stats.speed){
+            attackPoke = instance2;
+            defendingPoke = instance1;
+        } else {
+            attackPoke = ; //randomisera här?
+        }
     }
     
 };
@@ -216,6 +232,9 @@ compareBtn.addEventListener('click', async () => {
         Pokemon.comparePokemons(instanceArray[0], instanceArray[1]); 
 
 
+        //Battle
+
+
     }); // här slutar .then som följt promise.all
 
 }); // Slut på compareBtns eventlistener
@@ -223,8 +242,8 @@ compareBtn.addEventListener('click', async () => {
 
 //Battle
 
-let battleBtn = document.querySelector('#battleBtn');
+// let battleBtn = document.querySelector('#battleBtn');
 
-battleBtn.addEventListener('click', ()=>{
-    
-})
+// battleBtn.addEventListener('click', ()=>{
+
+// })
