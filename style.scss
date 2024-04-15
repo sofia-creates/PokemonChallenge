@@ -1,0 +1,117 @@
+.red { 
+    background-color: red;
+}
+
+.winnerStat {
+    text-decoration: underline;
+    text-decoration-color:#986a98;
+}
+
+body {
+    //bakgrund
+    background-color: #D6D1E0;;
+
+    //typsnitt
+    h1, h2, h3, h4, h5{
+        font-family: "Indie Flower", cursive;
+        color: #59415d;
+    }
+
+    h1{
+        font-size: 3em;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    h4 {
+        font-size: 1.5em;
+        margin-bottom: 0;
+    }
+
+    p, input, select, button, ul{
+        font-family:"Exo 2";
+    }
+
+    p, ul {
+        font-size: 0.8em;
+        color: rgb(37, 37, 37);
+    }
+
+    ul{
+        margin: 1em;
+        padding: 0;
+    }
+
+
+    //
+
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5%;
+
+        #h1Image {
+            width:60%;
+        }
+        
+
+    }
+
+    #inputContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            border: none;
+            // padding-top: 0.5em;
+            // padding-bottom: 0.5em;
+            padding: 0.8em 0.8em 0.8em 0.8em;
+            border-radius: 4px;
+            background-color: #AC86AC;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1.3px;
+            box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.1);
+            margin: 1em;
+        }
+    }
+
+
+
+    main{
+        display: flex;
+        justify-content: center;
+
+        .pokeContainer {
+            background-color: #C5BED0;
+            border: solid 1px #8A6E92;
+            border-radius: 8px;
+            box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.3);
+            padding: 0.9em; 
+            box-sizing: border-box;
+            margin: 10px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            .pokeSprite {
+                width: 80%;
+            }
+        }
+    }
+
+
+}
+
+
+
+

@@ -1,0 +1,83 @@
+.red {
+  background-color: red;
+}
+
+.winnerStat {
+  text-decoration: underline;
+  text-decoration-color: #986a98;
+}
+
+body {
+  background-color: #D6D1E0;
+}
+body h1, body h2, body h3, body h4, body h5 {
+  font-family: "Indie Flower", cursive;
+  color: #59415d;
+}
+body h1 {
+  font-size: 3em;
+  margin-bottom: 0;
+}
+body h2 {
+  text-align: center;
+}
+body h4 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+body p, body input, body select, body button, body ul {
+  font-family: "Exo 2";
+}
+body p, body ul {
+  font-size: 0.8em;
+  color: rgb(37, 37, 37);
+}
+body ul {
+  margin: 1em;
+  padding: 0;
+}
+body header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5%;
+}
+body header #h1Image {
+  width: 60%;
+}
+body #inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+body #inputContainer button {
+  border: none;
+  padding: 0.8em 0.8em 0.8em 0.8em;
+  border-radius: 4px;
+  background-color: #AC86AC;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.1);
+  margin: 1em;
+}
+body main {
+  display: flex;
+  justify-content: center;
+}
+body main .pokeContainer {
+  background-color: #C5BED0;
+  border: solid 1px #8A6E92;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2.5px rgba(0, 0, 0, 0.3);
+  padding: 0.9em;
+  box-sizing: border-box;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main .pokeContainer .pokeSprite {
+  width: 80%;
+}/*# sourceMappingURL=style.css.map */
