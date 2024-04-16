@@ -79,16 +79,28 @@ class Pokemon {
     //battle
     static battle = (instance1, instance2) => {
         //välja den snabbaste pokemonen till att börja attackera
+        console.log('battle is run');
         let attackPoke;
         let defendingPoke;
-        if(instance1.stats.speed > instance2.stats.speed){
+        let poke1Speed = JSON.stringify(instance1.stats.speed.base_stat);
+        let poke2Speed = JSON.stringify(instance2.stats.speed.base_stat);
+        console.log(`Pokemon nr 1 has the speed: ${poke1Speed}  and pokemon 2 has: ${poke2Speed}`)
+        if(poke1Speed > poke2Speed){
             attackPoke = instance1;
             defendingPoke = instance2;
-        } else if (instance2.stats.speed > instance1.stats.speed){
+            console.log(`attacking poke is: ${JSON.stringify(attackPoke.name)} and defending poke is: ${JSON.stringify(defendingPoke.name)}`);
+        } else if (poke1Speed < poke2Speed){
             attackPoke = instance2;
             defendingPoke = instance1;
+            console.log(`attacking poke is: ${JSON.stringify(attackPoke)} and defending poke is: ${JSON.stringify(defendingPoke)}`);
         } else {
-            attackPoke = ; //randomisera här?
+            //randomisera vem som börjar
+            let array = [instance1, instance2];
+            let index = Math.floor(Math.random() * 2);
+            attackPoke = array[index]; 
+            defendingPoke = array[!index];
+            console.log(`The pokemons are equally fast, the chosen index is ${index}`);
+
         }
     }
     
@@ -233,7 +245,7 @@ compareBtn.addEventListener('click', async () => {
 
 
         //Battle
-
+        Pokemon.battle(instanceArray[0], instanceArray[1]);
 
     }); // här slutar .then som följt promise.all
 
