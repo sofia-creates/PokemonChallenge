@@ -32,12 +32,12 @@ class Pokemon {
             if(trait1 > trait2){
                 counter1 +=1;
                 //göra den texten röd i domen  
-                let textToUnderline = document.querySelector(`div.pokeContainer:nth-child(1) ${tagType}.${className}`) ; // problem: denna väljer p taggar, men ibland är det ju li taggar som behövs, när man ska välja stats.
+                let textToUnderline = document.querySelector(`div.pokeContainer:nth-child(1) ${tagType}.${className}`) ; 
                 console.log(textToUnderline);
                 textToUnderline.classList.add('winnerStat');
             } else if(trait1 < trait2){
                 counter2 +=1;
-                //göra den texten röd i domen  
+                //göra den texten understruken i domen  
                 let textToUnderline = document.querySelector(`div.pokeContainer:nth-child(2) ${tagType}.${className}`) ;
                 console.log(textToUnderline);
                 textToUnderline.classList.add('winnerStat');
@@ -48,7 +48,7 @@ class Pokemon {
 
         compareTraits(instance1.weight, instance2.weight, 'weight', 'p');
         compareTraits(instance1.height, instance2.height, 'height', 'p');
-        compareTraits(instance1.stats.hp.base_stat, instance2.stats.hp.base_stat, 'hp', 'li'); //uppkommer problem här pga 
+        compareTraits(instance1.stats.hp.base_stat, instance2.stats.hp.base_stat, 'hp', 'li'); 
         compareTraits(instance1.stats.attack.base_stat, instance2.stats.attack.base_stat, 'attack', 'li');
         compareTraits(instance1.stats.defense.base_stat, instance2.stats.defense.base_stat, 'defense' , 'li'); 
         compareTraits(instance1.stats.specialAttack.base_stat, instance2.stats.specialAttack.base_stat, 'specialAttack', 'li' );
@@ -98,10 +98,31 @@ class Pokemon {
             let array = [instance1, instance2];
             let index = Math.floor(Math.random() * 2);
             attackPoke = array[index]; 
-            defendingPoke = array[!index];
-            console.log(`The pokemons are equally fast, the chosen index is ${index}`);
-
+            defendingPoke = array[(index + 1) % 2];
+            console.log(`The pokemons are equally fast, the chosen index is ${index} and attackPoke is ${JSON.stringify(attackPoke.name)} while defendingPoke is: ${JSON.stringify(defendingPoke.name)}` );
         }
+
+        //fight fight fight!!!
+        let newAttack = () => {
+            let damage = (attackPoke.stats.attack + attackPoke.stats.specialAttack) - (defendingPoke.stats.defense + defendingPoke.stats.specialDefense) *0.8;
+
+            if(damage<10){
+                damage =10;
+            }
+
+            defendingPoke.stats.hp = defendingPoke.stats.hp - damage; 
+
+            //byt attackPoke med defendingPoke
+        }
+
+        while(!(instance1.stats.hp <= 0) || !(instance2.stats.hp <= 0)){ //medans båda pokes hp INTE är noll eller mindre, gör detta
+            newAttack();
+        }
+
+        let winningPoke = 
+        console.log(``)
+
+
     }
     
 };
