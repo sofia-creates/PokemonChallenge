@@ -4,11 +4,17 @@
 
 .winnerStat {
   text-decoration: underline;
+  text-decoration-thickness: 1.5px;
   text-decoration-color: #986a98;
 }
 
 body {
+  min-height: 100vw;
   background-color: #D6D1E0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 body h1, body h2, body h3, body h4, body h5 {
   font-family: "Indie Flower", cursive;
@@ -63,6 +69,7 @@ body #inputContainer button {
   margin: 1em;
 }
 body main {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -82,4 +89,19 @@ body main .pokeContainer {
 }
 body main .pokeContainer .pokeSprite {
   height: 11em;
+}
+body #battleArena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5em;
+}
+body footer {
+  flex-shrink: 0;
+  background-color: #8A6E92;
+  height: 20vh;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */

@@ -4,12 +4,18 @@
 
 .winnerStat {
     text-decoration: underline;
+    text-decoration-thickness: 1.5px;
     text-decoration-color:#986a98;
 }
 
 body {
     //bakgrund
-    background-color: #D6D1E0;;
+    min-height: 100vw;
+    background-color: #D6D1E0;
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex-direction: column;
 
     //typsnitt
     h1, h2, h3, h4, h5{
@@ -86,6 +92,7 @@ body {
 
 
     main{
+        flex-grow: 1;
         display: flex;
         justify-content: center;
         width: 100vw;
@@ -110,6 +117,28 @@ body {
                 height:11em;
             }
         }
+    }
+
+
+    #battleArena {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin: 5em;
+
+    }
+
+    footer {
+        flex-shrink: 0;
+        background-color: #8A6E92;
+        height: 20vh;
+        //position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
     }
 
 

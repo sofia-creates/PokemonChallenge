@@ -2,10 +2,11 @@ let dropdown1 = document.querySelector('#dropdown1');
 let dropdown2 = document.querySelector('#dropdown2');
 let compareBtn = document.querySelector('#compareBtn');
 let main = document.querySelector('main');
+let battleArena = document.querySelector('#battleArena');
 
 
 class Pokemon {
-    constructor(name, imgURL, types, weight, height, stats){ //stats är en array
+    constructor(name, imgURL, types, weight, height, stats, moves){ //stats är en array
         this.name = name;
         this.imgURL = imgURL;
         this.types = types;
@@ -19,6 +20,7 @@ class Pokemon {
            specialDefense: stats[4],
            speed: stats[5]
         }
+        this.moves = moves;
     }
 
     static comparePokemons = (instance1, instance2) => {
@@ -117,6 +119,12 @@ class Pokemon {
 
             console.log('After attack: ' + defendingPoke.stats.hp.base_stat);
 
+            console.log(JSON.stringify(attackPoke.moves[0].move.name));
+            console.log(`${attackPoke.name} used ${attackPoke.moves[0].move.name} and did ${damage} damage.  ${defendingPoke.name} remaining HP is: ${defendingPoke.stats.hp.base_stat}`);
+
+            battleArena.innerHTML += `<p>${attackPoke.name.charAt(0).toUpperCase() + attackPoke.name.slice(1)} used ${attackPoke.moves[0].move.name} and did ${damage} damage.  ${defendingPoke.name.charAt(0).toUpperCase() + defendingPoke.name.slice(1)} remaining HP is: ${defendingPoke.stats.hp.base_stat} </p>`
+
+
             //byt attackPoke med defendingPoke
             let swapPoke = () => {
                 let temp = attackPoke;
@@ -127,6 +135,10 @@ class Pokemon {
             swapPoke();
         }
 
+        battleArena.innerHTML = `
+        <h3>Battle is ON!</h3>
+        `;
+
         //newAttack();
         while(instance1.stats.hp.base_stat > 0 &&instance2.stats.hp.base_stat > 0){ //medans båda pokes hp INTE är noll eller mindre, gör detta
             console.log('while loop is run')
@@ -136,10 +148,10 @@ class Pokemon {
         let winningPoke;
         
         if(instance2.stats.hp.base_stat <= 0){
-            console.log(`instans 2 är mindre än eller lika med 0`);
+            // console.log(`instans 2 är mindre än eller lika med 0`);
             winningPoke = instance1;
         } else if(instance1.stats.hp.base_stat <= 0){
-            console.log(`instans 2 är mindre än eller lika med 0`);
+            // console.log(`instans 2 är mindre än eller lika med 0`);
             winningPoke = instance2;
         } else {
             console.log('den har hoppat över två ifs')
@@ -147,6 +159,9 @@ class Pokemon {
 
 
         console.log(`The winner of the battle is: ${winningPoke.name}`);
+        battleArena.innerHTML += `
+        <h4>And the winner is... ${winningPoke.name.toUpperCase()} !!! </h4>
+        `;
 
 
     }
@@ -216,7 +231,7 @@ compareBtn.addEventListener('click', async () => {
         pokemons.forEach( async (pokemon) => { //renderar ut resultatet av promisesna
                 
             //skapa instans av klassen Pokemon
-            let pokemonInstance = new Pokemon(pokemon.name, undefined , pokemon.types , pokemon. weight, pokemon.height, pokemon.stats); // lös bilden senare
+            let pokemonInstance = new Pokemon(pokemon.name, undefined , pokemon.types , pokemon. weight, pokemon.height, pokemon.stats, pokemon.moves); // lös bilden senare
             console.log(pokemonInstance);
 
             //lägg instansen av klassen i en array som senare ska användas för att jämföra dem
