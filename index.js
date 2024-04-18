@@ -77,9 +77,10 @@ class Pokemon {
     } //slut på comparePokemons
 
     //battle
-    static battle = (instance1, instance2) => {
+    static battle = async (instance1, instance2) => {
         //välja den snabbaste pokemonen till att börja attackera
         console.log('battle is run');
+        //skapa plats i domen för att skriva ut
         let attackPoke;
         let defendingPoke;
         let poke1Speed = JSON.stringify(instance1.stats.speed.base_stat);
@@ -92,7 +93,7 @@ class Pokemon {
         } else if (poke1Speed < poke2Speed){
             attackPoke = instance2;
             defendingPoke = instance1;
-            console.log(`attacking poke is: ${JSON.stringify(attackPoke)} and defending poke is: ${JSON.stringify(defendingPoke)}`);
+            console.log(`attacking poke is: ${JSON.stringify(attackPoke.name)} and defending poke is: ${JSON.stringify(defendingPoke.name)}`);
         } else {
             //randomisera vem som börjar
             let array = [instance1, instance2];
@@ -101,26 +102,51 @@ class Pokemon {
             defendingPoke = array[(index + 1) % 2];
             console.log(`The pokemons are equally fast, the chosen index is ${index} and attackPoke is ${JSON.stringify(attackPoke.name)} while defendingPoke is: ${JSON.stringify(defendingPoke.name)}` );
         }
-
+        console.log('decided attackPoke, newAttack not yet run');
         //fight fight fight!!!
-        let newAttack = () => {
-            let damage = (attackPoke.stats.attack + attackPoke.stats.specialAttack) - (defendingPoke.stats.defense + defendingPoke.stats.specialDefense) *0.8;
+        let newAttack = async () => {
+            console.log('newAttack is run');
+            let damage = (attackPoke.stats.attack.base_stat + attackPoke.stats.specialAttack.base_stat) - (defendingPoke.stats.defense.base_stat + defendingPoke.stats.specialDefense.base_stat) *0.8;
 
             if(damage<10){
                 damage =10;
             }
+            console.log('damage is: ' + damage);
+            console.log('Before attack defending hp is: ' + defendingPoke.stats.hp.base_stat);
+            defendingPoke.stats.hp.base_stat -= damage; 
 
-            defendingPoke.stats.hp = defendingPoke.stats.hp - damage; 
+            console.log('After attack: ' + defendingPoke.stats.hp.base_stat);
 
             //byt attackPoke med defendingPoke
+            let swapPoke = () => {
+                let temp = attackPoke;
+                attackPoke = defendingPoke;
+                defendingPoke = temp;
+            }
+
+            swapPoke();
         }
 
-        while(!(instance1.stats.hp <= 0) || !(instance2.stats.hp <= 0)){ //medans båda pokes hp INTE är noll eller mindre, gör detta
-            newAttack();
+        //newAttack();
+        while(instance1.stats.hp.base_stat > 0 &&instance2.stats.hp.base_stat > 0){ //medans båda pokes hp INTE är noll eller mindre, gör detta
+            console.log('while loop is run')
+            await newAttack();
         }
 
-        let winningPoke = 
-        console.log(``)
+        let winningPoke;
+        
+        if(instance2.stats.hp.base_stat <= 0){
+            console.log(`instans 2 är mindre än eller lika med 0`);
+            winningPoke = instance1;
+        } else if(instance1.stats.hp.base_stat <= 0){
+            console.log(`instans 2 är mindre än eller lika med 0`);
+            winningPoke = instance2;
+        } else {
+            console.log('den har hoppat över två ifs')
+        }
+
+
+        console.log(`The winner of the battle is: ${winningPoke.name}`);
 
 
     }
